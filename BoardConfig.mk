@@ -16,14 +16,24 @@
 DEVICE_PATH := device/samsung/j7velte
 
 # Audio
-BOARD_USE_TFA_AMP := true
+TARGET_BOARD_HAS_OSS_AUDIO_HAL := true
+TARGET_BOARD_HAS_A6LTE_AUDIO_HAL := false
+TARGET_BOARD_HAS_M10LTE_AUDIO_HAL := false
+TARGET_BOARD_HAS_TFA_AMP := false
+BOARD_USES_EXYNOS7870_TFA_AMP := false
+
+# Display
+TARGET_SCREEN_DENSITY := 320
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := j7velte,j7veltedx,j7veltedd,j7veltekk
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+BOARD_CUSTOM_BT_CONFIG := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
 # Kernel
 TARGET_KERNEL_CONFIG := exynos7870-j7velte_defconfig
@@ -31,12 +41,19 @@ TARGET_KERNEL_CONFIG := exynos7870-j7velte_defconfig
 # HIDL
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/configs/manifest.xml
 
+# misc
+BUILD_BROKEN_VINTF_PRODUCT_COPY_FILES := true
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_j7velte
 TARGET_RECOVERY_DEVICE_MODULES := libinit_j7velte
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+
+# Shims
+TARGET_LD_SHIM_LIBS += \
+    /vendor/lib/libbauthserver.so|/vendor/lib/libbauthtzcommon_shim.so
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
