@@ -78,4 +78,20 @@
 
     <!-- WIFI_HIDL_FEATURE_DISABLE_AP_MAC_RANDOMIZATION is deprecated in R so we move to overlay -->
     <bool name="config_wifi_ap_randomization_supported">false</bool>
+
+    <!-- Specifies the component name of the default doze service. -->
+    <string name="config_dozeComponent" translatable="false">com.android.systemui/com.android.systemui.doze.DozeService</string>
+
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Control whether the always on display mode is enabled by default. -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
+    <!-- If true, the doze component is not started until after the screen has been
+         turned off and the screen off animation has been performed. -->
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
+
+    <!-- Power Management: Decouple interactive mode from display state to allow dozing -->
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 </resources>
